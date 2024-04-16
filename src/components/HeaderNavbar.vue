@@ -6,6 +6,13 @@
         <span>Your Company</span>
       </a>
 
+      <!-- Navigation Switch -->
+      <a href="#navigation" class="nav-switch" title="點擊前往主導覽">
+        <div aria-hidden="true"></div>
+        <div aria-hidden="true"></div>
+        <div aria-hidden="true"></div>
+      </a>
+
       <!-- Navigation -->
       <nav id="navigation" class="nav">
         <ul class="menu">
@@ -15,19 +22,13 @@
           <li>
             <a href="#" title="最新消息">最新消息</a>
             <ul>
-              <li><a href="#" title="最新消息">最新消息</a></li>
+              <li><a href="#" title="最新公告">最新公告</a></li>
               <li><a href="#" title="活動資訊">活動資訊</a></li>
             </ul>
           </li>
         </ul>
       </nav>
 
-      <!-- Navigation Switch -->
-      <a href="#navigation" class="nav-switch" title="點擊前往主導覽">
-        <div aria-hidden="true"></div>
-        <div aria-hidden="true"></div>
-        <div aria-hidden="true"></div>
-      </a>
     </div>
   </header>
 </template>
