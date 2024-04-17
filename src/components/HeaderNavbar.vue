@@ -1,17 +1,17 @@
 <template>
   <header class="header">
-    <div class="l-container-lg">
+    <div class="container-lg">
       <a href="#" class="logo">
         <img src="../assets/images/logo.svg" />
         <span>Your Company</span>
       </a>
 
       <!-- Navigation Switch -->
-      <a href="#navigation" class="nav-switch" title="點擊前往主導覽">
+      <!-- <a href="#navigation" class="nav-switch" title="點擊前往主導覽">
         <div aria-hidden="true"></div>
         <div aria-hidden="true"></div>
         <div aria-hidden="true"></div>
-      </a>
+      </a> -->
 
       <!-- Navigation -->
       <nav id="navigation" class="nav">
@@ -32,14 +32,22 @@
     </div>
   </header>
 </template>
-<script>
-export default {
-  setup() {
-    return {
 
-    };
-  },
-};
+<script setup>
+import { onMounted } from 'vue';
+import MobileDetect from 'mobile-detect';
+
+onMounted(() => {
+  const UA = window.navigator.userAgent;
+  const md = new MobileDetect(UA);
+  const { body } = document;
+
+  if (md.mobile()) {
+    body.classList.add('mb');
+  } else {
+    body.classList.add('pc');
+  }
+});
 </script>
 <style lang="scss" scoped>
 
