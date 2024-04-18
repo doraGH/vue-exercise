@@ -16,7 +16,7 @@
 
       <!-- Navigation -->
       <nav id="navigation" class="nav">
-        <ul class="menu reset">
+        <ul class="menu">
           <li>
             <a href="#" title="關於本區">關於本區</a>
           </li>
