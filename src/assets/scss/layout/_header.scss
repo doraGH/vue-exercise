@@ -15,13 +15,16 @@
   top: 0;
   right: 0;
   transition: all 0.35s ease;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 5%);
   .w-container {
     display: flex;
     justify-content: space-between;
-    padding: 0 3rem;
+    align-items: center;
+    // padding: 0 3rem;
   }
 }
-.logo {
+.nav-brand {
   display: flex;
   margin: 1rem;
   width: auto;
@@ -32,6 +35,90 @@
     align-items: center;
   }
 }
+
+/* 其他選單 qlink */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0 1rem;
+  > li {
+    position: relative;
+    > a {
+      padding: 1rem;
+      width: 30px;
+      white-space: nowrap;
+      color: var(--color-text);
+    }
+  }
+}
+.pc .nav-links {
+  > li {
+    &:hover {
+      ul {
+        display: block;
+        animation: ani_fade_in 0.25s both;
+      }
+    }
+    > a {
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+  }
+}
+.search-switch {
+  &.is-open {
+    svg {
+      color: var(--color-primary);
+    }
+  }
+}
+.pc .search-switch:hover {
+  svg {
+    color: var(--color-primary);
+  }
+}
+.search-popup {
+  display: none;
+  position: absolute;
+  width: 100%;
+  top: calc(100% + 0.75rem);
+  right: 0;
+  transform: translateY(0);
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(#000, 0.2);
+  padding: 5px;
+  min-width: 300px;
+  &.is-open {
+    display: block;
+  }  
+}
+.search-group {
+  display: flex;
+  align-items: stretch;
+  .search-input {
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+    border: 1px solid var(--color-primary);
+    border-radius: 0.25rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 0.25rem 1rem;
+    outline: 0;
+  }
+  .search-send {
+    cursor: pointer;
+    border: none;
+    border-radius: 0.25rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: var(--color-primary);
+    color: #fff;
+    padding: 0.25rem 1rem;
+  }
+}
+
 
 /* 選單按鈕 */
 .nav-switch {
@@ -46,7 +133,7 @@
     top: 50%;
     width: 30px;
     height: 2px;
-    background-color: var(--color-main); // color
+    background-color: var(--color-primary); // color setting
     transform: translate(-50%, -50%) rotate(0);
     transform-origin: center;
     transition: margin 0.35s 0.3s, transform 0.35s;
@@ -75,7 +162,6 @@
     display: block;
   }
 }
-
 
 /* menu 選單 */
 .nav {
@@ -119,14 +205,14 @@
           background-color: #fff;
           transition: background-color 0.2s;
           &.current {
-            background-color: rgb(var(--color-main2));
+            background-color: var(--color-primary);
           }
         }
       }
     }
     // &.is-open {
     //   > a {
-    //     color: rgb(var(--color-main));
+    //     color: var(--color-primary);
     //   }
     // }
   }
@@ -135,7 +221,7 @@
   > li {
     &:hover {
       > a {
-        color: rgb(var(--color-main2));
+        color: var(--color-primary);
       }
       > ul {
         display: block;

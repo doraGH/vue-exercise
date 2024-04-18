@@ -11,8 +11,9 @@
   // ===========
   // 色系 
   // ===========
-  --color-main: #1FAC79; //主色
-  --color-main2: 208 181 115;
+  --color-primary: #1FAC79;
+  --color-secondary: #0aa073;
+  --color-text: #444;
 
   // ===========
   // 文字尺寸
@@ -43,6 +44,9 @@
   --w-container: 1420px;
   // 主容器寬(較大)
   --w-container-lg: 1740px;
+  // 按鈕高
+  --h-btn: 48px;
+  // --h-btn-lg: 54px;
 
   // Header
   // --h-header: 90px;
