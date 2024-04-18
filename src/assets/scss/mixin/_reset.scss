@@ -5,13 +5,7 @@
 // Mixin
 @use "../mixin/mixin";
 
-/* 
- * Reset
- */
-
-/* 
- * Reset
- */
+/*  Reset */
 * {
   min-width: 0;
   box-sizing: border-box;
@@ -105,4 +99,17 @@ body, html {
   // &::-webkit-scrollbar:focus {
   //   background: #555;
   // }
+}
+
+.reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.reset input, .reset label, .reset select {
+  vertical-align: middle;
 }

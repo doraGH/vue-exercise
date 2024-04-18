@@ -4,23 +4,20 @@
 
 :root{
   // ===========
-  // 字型 rgb
-  // ===========
-  //主色
-  --color-main: 190 154 54;
-  --color-main2: 208 181 115;
-
-  // ===========
   // 字型
   // ===========
   --ff-def: 'Noto Sans TC', 'Microsoft JhengHei UI','Microsoft JhengHei', sans-serif;
 
-  
+  // ===========
+  // 色系 
+  // ===========
+  --color-main: #1FAC79; //主色
+  --color-main2: 208 181 115;
+
   // ===========
   // 文字尺寸
   // ===========
-  //內文
-  --fs-def: 16px;
+  --fs-def: 16px; // 預設
   // 標題 25-30px
   --fs-subhead: clamp(1.388em, 1.57vw, 1.66em);
 
@@ -39,41 +36,35 @@
   // small
   --fz-sm: 0.9375em;
 
+  // ===========  
+  // container 容器尺寸
+  // ===========
+  // 主容器寬
+  --w-container: 1420px;
+  // 主容器寬(較大)
+  --w-container-lg: 1740px;
+
+  // Header
+  // --h-header: 90px;
+  // .is-fixed-header {
+  //   --h-header: 75px;
+  //   #i-kanban {
+  //     --h-header: 90px;
+  //   }
+  // }
+  // --h-btn: 50px;
+
   // =========== 
   // 間距
   // ===========
-
   --gap: 25px;
 
-  
-  // ===========
-  // 寬或高
-  // ===========
 
-  // 主容器寬
-  --w-container: 1100px;
-  #i-kanban {
-    --w-container: 1250px;
-  }
-  // 主容器寬(較大)
-  --w-container-lg: 1400px;
-
-  // Header
-  --h-header: 90px;
-  .is-fixed-header {
-    --h-header: 75px;
-    #i-kanban {
-      --h-header: 90px;
-    }
-  }
-  --h-btn: 50px;
-
-  
   // ===========
   // 影音plyr套件 顏色 與 play控制器間距
   // ===========
-  --plyr-control-spacing: 10px;
-  --plyr-color-main: #d0b573;
+  // --plyr-control-spacing: 10px;
+  // --plyr-color-main: #d0b573;
 
 
   // ===========
@@ -81,19 +72,21 @@
   // ===========
   
   // Button
-  --button-radius: 50px;
+  // --button-radius: 50px;
 
 }
-@media  (max-width: 767px) {
-  :root{
+
+// (max-width 由大到小-電腦優先) (min-width 由小到大-手機優先)
+// @media  (max-width: 767px) {
+//   :root{
     
-    // Header
-    --h-header: 65px;
-    .is-fixed-header {
-      --h-header: 65px;
-      #i-kanban {
-        --h-header: 65px;
-      }
-    }
-  }
-}
+//     // Header
+//     --h-header: 65px;
+//     .is-fixed-header {
+//       --h-header: 65px;
+//       #i-kanban {
+//         --h-header: 65px;
+//       }
+//     }
+//   }
+// }
