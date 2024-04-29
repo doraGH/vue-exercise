@@ -7,16 +7,23 @@
       </a>
 
       <!-- Navigation -->
-      <nav id="navigation" class="navbar">
+      <nav class="navbar">
         <ul class="menu">
           <li>
             <a href="#" title="關於本區">關於本區</a>
           </li>
-          <li>
-            <a href="#" title="最新消息">最新消息</a>
+          <li class="has-child" :class="{'is-open': showSubMenu === 'news'}">
+            <a href="#" title="最新消息" @click="toggleSubMenu('news')">最新消息</a>
             <ul>
               <li><a href="#" title="最新公告">最新公告</a></li>
               <li><a href="#" title="活動資訊">活動資訊</a></li>
+            </ul>
+          </li>
+          <li class="has-child" :class="{'is-open': showSubMenu  === 'works'}">
+            <a href="#" title="作品集" @click="toggleSubMenu('works')">作品集</a>
+            <ul>
+              <li><a href="#" title="智慧生活">智慧生活</a></li>
+              <li><a href="#" title="友善校園">友善校園</a></li>
             </ul>
           </li>
         </ul>
@@ -24,6 +31,17 @@
 
       <!-- nav links -->
       <ul class="nav-links">
+        <li class="lang-switch"
+          :class="{'is-open': langOpen}">
+          <a href="#" @click.prevent="langOpen = !langOpen">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"  fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"  stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-world"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" /><path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" /></svg>
+          </a>
+          <ul class="reset">
+            <!-- 當前語系 .current -->
+            <li><a href="javascript:void(0);" class="current" title="繁中">繁中</a></li>
+            <li><a href="javascript:void(0);" title="EN">EN</a></li>
+          </ul>
+        </li>
         <li><!-- Search -->
           <a href="#" class="search-switch"
           :class="{'is-open': searchOpen}" @click.prevent="searchOpen = !searchOpen">
@@ -34,7 +52,7 @@
 
       <!-- Navigation Switch -->
       <a href="#" class="nav-switch" title="點擊前往主導覽"
-      :class="{'is-open': isOpen}" @click.prevent="isOpen = !isOpen">
+      :class="{'is-open': isOpen}" @click.prevent="toggleNav">
         <span></span>
         <span></span>
         <span></span>
@@ -64,8 +82,38 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import MobileDetect from 'mobile-detect';
+
+const isOpen = ref(false);
+const searchOpen = ref(false);
+const langOpen = ref(false);
+
+const toggleNav = () => {
+  isOpen.value = !isOpen.value;
+
+  if (isOpen.value) {
+    searchOpen.value = false;
+    langOpen.value = false;
+  }
+};
+
+// 改變視窗返回預設值
+const handleResize = () => {
+  isOpen.value = false;
+  searchOpen.value = false;
+  langOpen.value = false;
+};
+
+// 次選單點擊
+const showSubMenu = ref(null);
+const toggleSubMenu = (menu) => {
+  if (showSubMenu.value === menu) {
+    showSubMenu.value = null;
+  } else {
+    showSubMenu.value = menu;
+  }
+};
 
 onMounted(() => {
   // Mobile Detect
@@ -77,10 +125,14 @@ onMounted(() => {
   } else {
     body.classList.add('pc');
   }
-});
 
-const isOpen = ref(false);
-const searchOpen = ref(false);
+  // 改變視窗大小時,呼叫 handleResize
+  window.addEventListener('resize', handleResize);
+});
+// 元件卸載時移除監聽事件
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize);
+});
 
 </script>
 <style lang="scss" scoped>
