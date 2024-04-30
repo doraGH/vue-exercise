@@ -154,7 +154,7 @@
     transform: scale(1.3);    
   }
 }
-@media  (min-width: 992px) {
+@media  (min-width: 767px) {
   .nav-links {
     > li {
       &:hover {
@@ -200,7 +200,7 @@
     background-color: var(--color-primary); // color setting
     transform: translate(-50%, -50%) rotate(0);
     transform-origin: center;
-    transition: margin 0.35s 0.3s, transform 0.35s;
+    transition: margin 0.25s 0.2s, transform 0.25s;
     &:nth-child(1) { margin-top: -15%;}
     &:nth-child(2) { transition: opacity 0.35s;}
     &:nth-child(3) { margin-top: 15%;}
@@ -209,7 +209,7 @@
     &:nth-child(1) {
       margin-top: 0;
       transform: translate(-50%, -50%) rotate(45deg);
-      transition: margin 0.35s, transform 0.35s 0.3s;
+      transition: margin 0.25s, transform 0.25s 0.2s;
     }
     &:nth-child(2) {
       opacity: 0;
@@ -217,7 +217,7 @@
     &:nth-child(3) {
       margin-top: 0;
       transform: translate(-50%, -50%) rotate(-45deg);
-      transition: margin 0.35s, transform 0.35s 0.3s;
+      transition: margin 0.25s, transform 0.25s 0.2s;
     }
   }
 }
@@ -279,12 +279,13 @@
   }
 }
 
-@media  (min-width: 992px) {
+@media  (min-width: 767px) {
   .navbar {
     margin-left: auto;
   }
   .menu {
     > li {
+      padding: 1rem 0;
       &:hover {
         > a {
           color: var(--color-primary);
@@ -339,11 +340,8 @@
         color: #fff;
       }
       > ul {
-        pointer-events: auto;
-        display: none;
         position: relative;
-        top: 1rem;
-        height: 0;
+        display: none;
       }
     }
   }
@@ -355,9 +353,9 @@
     .menu {
       > li.is-open {
         > ul {
+          pointer-events: auto;
           display: block;
           opacity: 1;
-          height: auto;
         }
       }
     }
