@@ -1,9 +1,12 @@
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue';
-</script>
-
 <template>
   <main>
-    <TheWelcome />
+    <HeaderNavbar />
+    <IndexBanner />
   </main>
 </template>
+
+<script setup>
+import HeaderNavbar from '../components/HeaderNavbar.vue';
+import IndexBanner from '../components/IndexBanner.vue';
+
+</script>

@@ -1,0 +1,56 @@
+@use "../mixin/_variable" as vars; // 變數
+@use "../mixin/mixin";
+
+/* 
+ * PLUGIN: Swiper
+ */
+ .swiper-button-next, .swiper-button-prev {
+  width: var(--h-btn);
+  height: var(--h-btn);
+  border-radius: 50%;
+  z-index: 10;
+  border-style: solid;
+  border-width: 2px;
+  border-color: transparent;
+  color: var(--color-primary);
+  background-color: rgb(255 255 255 / 30%);
+  box-shadow: 0 0 15px rgb(0 0 0 / 40%);
+  transition: color 0.25s, background-color 0.25s 0.15s;
+  svg {
+    max-width: 22px;
+    z-index: 2;
+  }
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    border-radius: 50px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    top: -2px;
+    left: -2px;
+    background-color: #fff;
+    transform: scale(0);
+    transition: transform 0.25s;
+  }
+  &::after {
+    display: none;
+  }
+  @include mixin.do-under('.pc') {
+    &:hover {
+      background-color: #fff;
+      color: var(--color-primary);
+      &::before {
+        transform: scale(1);
+      }
+    }
+  }
+  &.white {
+    border-color: #fff;
+    background-color: transparent;
+    color: #fff;
+    &::before {
+      background-color: #fff;
+    }
+  }
+}

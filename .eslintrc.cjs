@@ -15,7 +15,7 @@ module.exports = {
         map: [
           ['@', './src'],
         ],
-        extensions: ['.js', '.vue'],
+        extensions: ['.js', '.vue', '.json'],
       },
     },
     'import/core-modules': [
