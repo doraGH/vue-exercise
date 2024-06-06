@@ -53,11 +53,11 @@
     width: 100%;
     aspect-ratio: 1920 / 975;
     overflow: hidden;
-    &::before {
-      content: '';
-      display: block;
-      aspect-ratio: 1920 / 975;
-    }
+    // &::before {
+    //   content: '';
+    //   display: block;
+    //   aspect-ratio: 1920 / 975;
+    // }
     img, picture {
       z-index: 0;
       position: absolute;
@@ -68,7 +68,7 @@
       object-fit: cover;
       object-position: center center;
     }
-    .background, iframe, .plyr--video {
+    .background {
       display: block;
       width: 100%;
       height: 100%;
@@ -76,9 +76,6 @@
       top: 0;
       left: 0;
       transition: opacity 1s;
-    }
-    .background {
-      overflow: hidden;
       img {
         width: 100%;
         height: 100%;
