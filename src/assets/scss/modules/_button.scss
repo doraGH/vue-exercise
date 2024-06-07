@@ -70,3 +70,53 @@
     color: #fff;
   }
 }
+
+.btn-banner {
+  @include mixin.g-btn( #fff, var(--color-secondary), 30px, 60px, 60px, 190px);
+  &::after {
+    @include mixin.g-btn-dec;
+    background: rgba(#000, 0.3);
+  }
+  span {
+    @include mixin.g-btn-aw;
+    background: #2571aa;
+  }
+}
+.pc {
+  .btn-banner:hover {
+    color: #fff;
+    gap: 1rem;
+    letter-spacing: 1px;
+    background-color: trnsparent;
+    &::after {
+      width: 400%;
+      height: 400%;
+    }
+    span {
+      background: #000;
+      &::before {
+        width: 0;
+      }
+      &::after {
+        transform: translate(-50%, -50%) rotate(405deg);
+      }
+    }
+  }
+}
+@media (max-width: 991px) {
+  .btn-banner {
+    font-size: 0.875rem;
+    height: 44px;
+    line-height: 44px;
+    width: 155px;
+    gap: 1rem;
+    span {
+      height: 30px;
+      width: 30px;
+      &::before {
+        width: 22px;
+        right: 13px;
+      }
+    }
+  }
+}

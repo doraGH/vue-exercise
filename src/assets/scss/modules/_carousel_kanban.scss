@@ -1,3 +1,5 @@
+@use "../mixin/variable" as vars;
+@use "../plugins/swiper";
 //-------- index banner --------//
 .scrolldown {
   cursor: pointer;
@@ -42,7 +44,6 @@
 }
 
 
-
 .i-banner-wrap {
   position: relative;
   overflow: hidden;
@@ -53,11 +54,6 @@
     width: 100%;
     aspect-ratio: 1920 / 975;
     overflow: hidden;
-    // &::before {
-    //   content: '';
-    //   display: block;
-    //   aspect-ratio: 1920 / 975;
-    // }
     img, picture {
       z-index: 0;
       position: absolute;
@@ -143,4 +139,127 @@
     background: #fff;
   }
   
+}
+
+// #義倉精機 https://demo.grnet.com.tw/yeitek/demo/
+// 按鈕數字 #萬寶隆空間設計 https://demo.grnet.com.tw/mb-design/demo/
+.i-banner {
+  aspect-ratio: 1920 / 970;
+  .swiper-wrapper {
+    overflow: visible
+  }
+  .swiper-slide {
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+  .video {
+    .plyr{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  // 文字
+  .swiper-txt {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+    position: absolute;
+    left: 50%;
+    width: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    .headline {
+      width: 100%;
+      font-weight: bold;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .subtitle {
+      width: 100%;
+      font-size: var(--fz-h2);
+    }
+    .btn-banner {
+      margin: 0 auto;
+    }
+  }
+  // 按鈕
+  .control-box {
+    position: absolute;
+    width: 10px;
+    right: 3%;
+    top: 40%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: normal;
+    color: #fff;
+    z-index: 1;
+    .swiper-pagination {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .swiper-pagination-bullet {
+      background: #fff;
+      &.swiper-pagination-bullet-active {
+        background: var(--color-secondary);
+        width: 12px;
+        height: 12px;
+        position: relative;
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 20px;
+          height: 20px;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: contain;
+          background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='100' ry='100' stroke='%23199DC8FF' stroke-width='3' stroke-dasharray='150%25%2c 100%25' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+          border-radius: 100px;
+          transform: translate(-50%,-50%);
+          animation: rotate 5s;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 991px) {
+  .i-banner {
+    aspect-ratio: 1000 / 970;
+    .swiper-txt {
+      width: 90%;
+      .subtitle {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .i-banner {
+    .swiper-txt {
+      gap: 5px;
+    .control-box {
+      width: 100%;
+      left: 0%;
+      top: 90%;
+      transform: translateY(0%);
+      .swiper-pagination-bullet {
+        opacity: 1;
+        margin: 0 5px;
+      }
+    }
+    }
+  }
 }

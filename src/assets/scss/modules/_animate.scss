@@ -15,11 +15,9 @@
     opacity: 1;
   }  
 }
-// @keyframes ani_loop_jump {
-//   0%, 100% {
-//     margin-top: 0;
-//   }
-//   50% {
-//     margin-top: 5px;
-//   }
-// }
+@keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

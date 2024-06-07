@@ -119,3 +119,76 @@
   }
   @return $string;
 }
+
+/* Button */
+// 使用範例：.btn-banner { @include mixin.g-btn() }
+@mixin g-btn( $font, $background, $radius, $height, $lineheight, $width) {
+  color: $font;
+  background-color: $background;
+  border-radius: $radius;
+  height: $height;
+  line-height: $lineheight;
+  width: $width;
+  border-style: solid;
+  border-width: 1px;
+  border: 0;
+  position: relative;
+  text-align: center;
+  font-size: var(--fluid-btn-txt);
+  padding: 0 10px;
+  transition: 0.3s var(--ease);
+  overflow: hidden;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  transition: letter-spacing 0.3s ease 0.1s, gap 0.3sease;
+}
+// 使用範例：.btn-banner { @include mixin.g-btn-dec }
+@mixin g-btn-dec {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;;
+  border-radius: 50%;
+  transition: all 0.5s ease;
+  left: -30%;
+  bottom: -100%;
+  opacity: 0.5;
+  z-index: -1;
+}
+// 使用範例：.btn-banner { @include mixin.g-btn-aw }
+@mixin g-btn-aw {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  z-index: 10;
+  transition: background 0.3s ease;
+  &::before {
+    content: '';
+    width: 36px;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 16px;
+    background: #fff;
+    transition: width 0.3s ease;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform-origin: center;
+    transform: translate(-50%, -50%) rotate(45deg);
+    transition: transform 0.3s ease;
+  }
+}

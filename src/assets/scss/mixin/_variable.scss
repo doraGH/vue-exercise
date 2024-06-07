@@ -5,36 +5,28 @@
 
 
 :root{
-  // ===========
+
   // 字型
-  // ===========
   --ff-def: 'Noto Sans TC', 'Microsoft JhengHei UI','Microsoft JhengHei', sans-serif;
 
   // ===========
   // 色系 
-  // ===========
   --color-primary: #1FAC79;
   --color-secondary: #0aa073;
   --color-text: #444;
 
   // ===========
   // 文字尺寸
-  // ===========
   --fs-def: 16px; // 預設
   // 標題 25-30px
   --fs-subhead: clamp(1.388em, 1.57vw, 1.66em);
 
-  // H1 20 - 
+  // H1 20 - (編輯器通用)
   --fz-h1: clamp(1.625rem, 2.5vw, 2rem);
-  // H2 (編輯器通用)
   --fz-h2: clamp(1.4125rem, 2.5vw, 1.875rem);
-  // H3 (編輯器通用)
   --fz-h3: clamp(1.375rem, 2.5vw, 1.625rem);
-  // H4 (編輯器通用)
   --fz-h4: clamp(1.25rem, 2.5vw, 1.5rem);
-  // H5 (編輯器通用)
   --fz-h5: clamp(1.1875rem, 2vw, 1.4125rem);
-  // H6 (編輯器通用)
   --fz-h6: clamp(1.125rem, 1.8vw, 1.375rem);
   // small
   --fz-sm: 0.9375em;
