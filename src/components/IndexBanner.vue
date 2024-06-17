@@ -1,126 +1,179 @@
 <template>
-  <section class="i-banner swiper">
+  <section class="i-banner swiper" ref="ibanRef">
     <div class="swiper-wrapper">
-      <a href="#" class="swiper-slide" title="查看更多"
+      <div class="swiper-slide"
       v-for="(item, index) in ibanslides" :key="index">
-        <picture>
-          <!-- 輪播小圖尺寸 800x570 -->
-          <source :srcset="item.source" media="(max-width: 991px)" />
-          <!-- 輪播大圖尺寸 1920x850-->
-          <img :src="item.src" class="img-fluid" alt="標題"
-          width="1920" height="850" loading="lazy" />
-        </picture>
-        <div class="swiper-txt">
-          <h2 class="headline" data-swiper-parallax="-400">
-            {{ item.headline }}
-          </h2>
-          <p class="subtitle" data-swiper-parallax="-200">
-            {{ item.subtitle }}
-          </p>
-          <a href="#" class="btn-banner" title="more detail">
-            more detail <span></span></a>
-        </div>
-      </a>
-    </div>
-    <div class="control-box">
-      <div class="swiper-pagination"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-      <div class="autoplay-progress">
-        <svg viewBox="0 0 30 30">
-          <circle cx="15" cy="15" r="13"></circle>
-        </svg>
-        <span></span>
+        <!-- 01 -->
+        <template v-if="item.type === 'image'">
+          <picture class="i-ban-pic">
+            <!-- 輪播小圖尺寸 800x570 -->
+            <source :srcset="item.source" media="(max-width: 991px)" />
+            <!-- 輪播大圖尺寸 1920x850-->
+            <img :src="item.src" class="img-fluid" alt="標題"
+            width="1920" height="850" loading="lazy" />
+          </picture>
+          <div class="swiper-txt">
+            <h2 class="headline" data-swiper-parallax="-400">
+              {{ item.headline }}
+            </h2>
+            <p class="subtitle" data-swiper-parallax="-200">
+              {{ item.subtitle }}
+            </p>
+            <a href="#" class="btn-banner" title="more detail">
+              more detail <span></span></a>
+          </div>
+        </template>
+        <!-- 02 Youtube影片
+          data-plyr-embed-id：YouTube影片ID
+
+          影片圖若不另傳照，可直接抓YT預設
+          YT預設1280x720：//img.youtube.com/vi/${videoid}/maxresdefault.jpg
+          YT預設640x480：//img.youtube.com/vi/${videoid}/sddefault.jpg
+          -->
+          <template v-else-if="item.type === 'video'">
+            <div class="video">
+              <div class="js-player"
+            data-plyr-provider="youtube" :data-plyr-embed-id="item.videoSrc"></div>
+            </div>
+          </template>
       </div>
+    </div>
+    <div class="control-box control-style">
+      <div class="swiper-button swiper-prev"></div>
+      <div class="swiper-dots"></div>
+      <div class="swiper-button swiper-next"></div>
     </div>
   </section>
 
-  <section class="i-banner-wrap">
-    <div class="i-banner__list swiper-wrapper">
-      <!-- swiper-slide 改a標籤 則可整張圖設連結 -->
-      <div class="swiper-slide"
-      :slides-per-view="1"
-      :space-between="0"
-      :modules="modules"
-      :loop="true"
-      :autoplay="{
-        delay: 5000,
-        disableOnInteraction: false,
-      }"
-      :navigation="true"
-      :pagination="{ clickable: true }"
-      >
-        <swiper-slide class="item">
-          <div class="foreground">
-            <img src="../assets/images/del/ban4_txt.png" alt="(圖)">
-          </div>
-          <picture class="background">
-            <source srcset="../assets/images/del/ban1s.jpg" media="(max-width: 743px)">
-            <img src="../assets/images/del/ban1.jpg" alt="(圖)" width="1920" height="975">
-          </picture>
-        </swiper-slide>
-      </div>
-      <!-- @ YouTube -->
-      <!-- <div class="swiper-slide">
-        <div class="item">
-          <div class="js-player"
-          data-plyr-provider="youtube" data-plyr-embed-id="usf_4ur5V2Y"></div>
-        </div>
-      </div> -->
-    </div>
-    <!-- dot -->
-    <!-- <div class="control-box">
-      <div class="swiper-dots"></div>
-    </div> -->
-    <!-- <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-pagination"></div> -->
-    <div class="scrolldown"></div>
-  </section>
 </template>
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
+import axios from 'axios';
 import Swiper from 'swiper';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
+import Plyr from 'plyr';
+import 'plyr/dist/plyr.css';
 
 // 安裝 Swiper 模組
 Swiper.use([Autoplay, Pagination, Navigation]);
 
-// json
-const ibanslides = ref([
-  {
-    source: 'https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    src: 'https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=1280&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    headline: 'Quality First',
-    subtitle: 'he leading equipment company in Asia for the design, development, and manufacturing of circuit board dust cleaning machines and consumables.',
-  },
-  {
-    source: 'https://images.unsplash.com/photo-1578301978018-3005759f48f7?q=80&w=960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    src: 'https://images.unsplash.com/photo-1578301978018-3005759f48f7?q=80&w=1280&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    headline: 'Two two',
-    subtitle: 'he leading equipment company in Asia for the design, development.',
-  },
-]);
+// json 資料
+const ibanslides = ref();
 
-// methods
-const ibanSwiper = () => new Swiper('.i-banner', {
+// #01 methods swiper
+const winH = ref(window.innerHeight);
+
+const ibanRef = ref(null);
+const kanbanT = ref(null);
+const kanbanB = ref(null);
+const ibanPlayers = ref([]);
+
+const handleResize = () => {
+  winH.value = window.innerHeight;
+  if (ibanRef.value) {
+    kanbanT.value = parseInt(ibanRef.value.getBoundingClientRect().top - winH.value * 0.5, 10);
+    kanbanB.value = parseInt(ibanRef.value.offsetHeight + kanbanT.value + winH.value * 0.5, 10);
+  }
+};
+
+const ibanSwiper = () => new Swiper(ibanRef.value, {
   slidesPerView: 1,
   loop: true,
   effect: 'fade',
   parallax: true,
   lazy: true,
-  autoplay: {
-    delay: 5000,
+  // autoplay: {
+  //   delay: 5000,
+  // },
+  navigation: {
+    nextEl: '.swiper-button.swiper-next',
+    prevEl: '.swiper-button.swiper-prev',
   },
   pagination: {
-    el: '.swiper-pagination',
+    el: ibanRef.value.querySelector('.swiper-dots'),
     clickable: true,
+    type: 'fraction',
+    formatFractionCurrent(number) {
+      return (`0${number}`).slice(-2);
+    },
+    formatFractionTotal(number) {
+      return (`0${number}`).slice(-2);
+    },
+    renderFraction(currentClass, totalClass) {
+      return `<span class="${currentClass}"></span>
+      <span class="gap">/</span>
+      <span class="${totalClass}"></span>`;
+    },
+  },
+  on: {
+    resize: () => {
+      handleResize();
+    },
+    init: (swiper) => {
+      // 初始化 Plyr 播放器
+      const players = Array.from(ibanRef.value.querySelectorAll('.js-player')).map((p) => new Plyr(p, {
+        muted: true,
+        hideControls: true,
+      }));
+
+      ibanPlayers.value = players;
+
+      players.forEach((player, index) => {
+        player.on('ready', () => {
+          if (index === 0 && player.elements.settingsContainer.closest('.swiper-slide-active')) {
+            player.play();
+          }
+        });
+        player.on('playing', () => {
+          ibanRef.value.classList.add('is-video-playing');
+          swiper.autoplay.stop();
+        });
+        player.on('pause', () => {
+          ibanRef.value.classList.remove('is-video-playing');
+        });
+        player.on('ended', () => {
+          swiper.autoplay.start();
+          swiper.slideNext(800);
+        });
+      });
+    },
+    slideChangeTransitionStart: (swiper) => {
+      const prevSlide = swiper.slides[swiper.previousIndex];
+
+      const prevVideo = ibanPlayers.value.find((player) => player.id === prevSlide.querySelector('.js-player').id);
+      if (prevVideo && prevVideo.playing) {
+        prevVideo.pause();
+      }
+    },
+    slideChangeTransitionEnd: (swiper) => {
+      const currentSlide = swiper.slides[swiper.activeIndex];
+
+      const currentVideo = ibanPlayers.value.find((player) => player.id === currentSlide.querySelector('.js-player').id);
+      if (currentVideo && !currentVideo.playing) {
+        currentVideo.play();
+      }
+    },
   },
 });
 
 onMounted(() => {
+  axios.get('/api/iban.json')
+    .then((response) => {
+      ibanslides.value = response.data;
+    })
+    .catch((error) => {
+      console.error('Error fetching data:', error);
+    });
+
   ibanSwiper();
+
+  // 監聽窗口大小變化
+  window.addEventListener('resize', handleResize);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize);
 });
 
 </script>

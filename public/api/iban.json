@@ -1,0 +1,23 @@
+[
+  {
+    "type": "image",
+    "source": "https://images.unsplash.com/photo-1718085201099-66f5f34cbc8f?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "src": 
+    "https://images.unsplash.com/photo-1718085201099-66f5f34cbc8f?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "headline": "Quality First",
+    "subtitle": "he leading equipment company in Asia for the design, development, and manufacturing of circuit board dust cleaning machines and consumables."
+  },
+  {
+    "type": "image",
+    "source": "https://images.unsplash.com/photo-1578301978018-3005759f48f7?q=80&w=960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "src": "https://images.unsplash.com/photo-1578301978018-3005759f48f7?q=80&w=1280&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "headline": "Two two",
+    "subtitle": "he leading equipment company in Asia for the design, development."
+  },
+  {
+    "type": "video",
+    "videoSrc": "bbqSo1wpBrc",
+    "source": "https://images.unsplash.com/photo-1578301978018-3005759f48f7?q=80&w=960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "src": "https://images.unsplash.com/photo-1578301978018-3005759f48f7?q=80&w=1280&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  }
+]
