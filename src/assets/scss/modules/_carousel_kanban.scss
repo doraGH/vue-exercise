@@ -45,7 +45,7 @@
 
 
 // #義倉精機 https://demo.grnet.com.tw/yeitek/demo/
-// 按鈕數字 #萬寶隆空間設計 https://demo.grnet.com.tw/mb-design/demo/
+// 按鈕數字 #萬寶隆空間設計 https://demo.grnet.com.tw/w-design/demo/
 .i-banner {
   margin-top: 90px;
   aspect-ratio: 1920 / 840;
@@ -77,25 +77,50 @@
       }
     }
     .video {
-      .plyr{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      video, embed, main iframe {
+        aspect-ratio: 16/9;
+        object-fit: cover;
+      }
+      .plyr--video {
         position: absolute;
+        z-index: 5;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
       }
+      .plyr__video-embed iframe, .plyr__video-wrapper--fixed-ratio video {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+      }
+      // .plyr {
+      //   display: block;
+      //   position: absolute;
+      //   top: 0;
+      //   left: 0;
+      //   width: 100%;
+      //   height: 100%;
+      // }
+      // iframe,
+      // .plyr--video {
+      //   position: absolute;
+      //   top: 0;
+      //   left: 0;
+      //   width: 100%;
+      //   height: 100%;
+      // }
+      // .plyr--video {
+      //   z-index: 5;
+      // }
     }
-    iframe,
-    .plyr--video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    .plyr--video {
-      z-index: 5;
-    }
+    
   }
   
   // 文字

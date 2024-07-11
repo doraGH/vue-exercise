@@ -6,7 +6,7 @@ import eslintPlugin from 'vite-plugin-eslint';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: './',
+  base: process.env.NODE_ENV === 'production' ? '/vue-exercise/' : '/',
   plugins: [
     vue(),
     eslintPlugin({

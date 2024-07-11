@@ -31,10 +31,14 @@
           YT預設640x480：//img.youtube.com/vi/${videoid}/sddefault.jpg
           -->
           <template v-else-if="item.type === 'video'">
-            <div class="video">
-              <div class="js-player"
-            data-plyr-provider="youtube" :data-plyr-embed-id="item.videoSrc"></div>
-            </div>
+            <picture class="i-ban-pic">
+              <div class="video">
+                <div class="js-player"
+              data-plyr-provider="youtube" :data-plyr-embed-id="item.videoSrc"></div>
+              <source :srcset="item.source" media="(max-width: 767px)">
+              <img :src="item.src" alt="(圖)帶入名稱" width="1920" height="850">
+              </div>
+            </picture>
           </template>
       </div>
     </div>
