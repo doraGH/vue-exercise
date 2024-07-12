@@ -64,6 +64,7 @@ Swiper.use([Autoplay, Pagination, Navigation]);
 
 // json 資料
 const ibanslides = ref();
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 // #01 methods swiper
 const winH = ref(window.innerHeight);
@@ -162,7 +163,7 @@ const ibanSwiper = () => new Swiper(ibanRef.value, {
 });
 
 onMounted(() => {
-  axios.get(`${process.env.VUE_APP_API_BASE_URL}/api/iban.json`)
+  axios.get(`${baseUrl}/iban.json`)
     .then((response) => {
       ibanslides.value = response.data;
     })
