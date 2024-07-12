@@ -13,6 +13,9 @@ export default defineConfig({
       include: ['src/**/*.js', 'src/**/*.vue', 'src/*.js', 'src/*.vue'],
     }),
   ],
+  define: {
+    'process.env.VUE_APP_API_BASE_URL': JSON.stringify(process.env.NODE_ENV === 'production' ? '/vue-exercise' : ''),
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

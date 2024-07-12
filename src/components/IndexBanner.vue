@@ -162,7 +162,7 @@ const ibanSwiper = () => new Swiper(ibanRef.value, {
 });
 
 onMounted(() => {
-  axios.get('/api/iban.json')
+  axios.get(`${process.env.VUE_APP_API_BASE_URL}/api/iban.json`)
     .then((response) => {
       ibanslides.value = response.data;
     })
