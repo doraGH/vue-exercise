@@ -100,10 +100,10 @@ const ibanSwiper = () => new Swiper(ibanRef.value, {
     clickable: true,
     type: 'fraction',
     formatFractionCurrent(number) {
-      return (`0${number}`).slice(-2);
+      return number;
     },
     formatFractionTotal(number) {
-      return (`0${number}`).slice(-2);
+      return number;
     },
     renderFraction(currentClass, totalClass) {
       return `<span class="${currentClass}"></span>
